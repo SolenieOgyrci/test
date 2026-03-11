@@ -1,1 +1,267 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Noto Sans', sans-serif; }
+        body {
+            background: #0b0f17;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            box-shadow: inset 8px 0 12px -6px rgba(255, 255, 255, 0.08), inset -8px 0 12px -6px rgba(255, 255, 255, 0.08);
+        }
+        .page {
+            max-width: 700px;
+            width: 100%;
+            background: transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo {
+            margin-bottom: 2.5rem;
+        }
+        .logo img {
+            width: 130px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        .question {
+            color: #cad2e2;
+            font-size: 1.2rem;
+            font-weight: 350;
+            letter-spacing: 0.02rem;
+            margin-bottom: 1.2rem;
+            text-align: center;
+            width: 100%;
+            background: transparent;
+            padding: 0 0.5rem;
+        }
+        .white-field {
+            width: 100%;
+            background: transparent;
+            border: 2px solid #f0f4ff;
+            border-radius: 0px;
+            padding: 1rem 1.8rem;
+            font-size: 1.4rem;
+            color: #f0f4ff;
+            outline: none;
+            transition: 0.2s;
+            font-weight: 350;
+            box-shadow: 0 0 4px #ffffff30;
+        }
+        .white-field:focus {
+            border-color: #ffffff;
+            box-shadow: 0 0 20px #ffffff60;
+        }
+        .smooth-transition {
+            animation: ultraSmooth 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        @keyframes ultraSmooth {
+            0% { opacity: 1; transform: scale(1); filter: blur(0px); }
+            30% { opacity: 0.3; transform: scale(0.99); filter: blur(2px); background: #ffffff08; }
+            70% { opacity: 0.7; transform: scale(1.005); filter: blur(0.5px); }
+            100% { opacity: 1; transform: scale(1); filter: blur(0px); }
+        }
+        .red-marker {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 400;
+            color: #b22;
+            text-shadow: 0 0 15px #c44;
+            margin: 2rem 0;
+            letter-spacing: 0.5rem;
+        }
+        .hide { display: none; }
+        .clickzone {
+            background: transparent;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 1.5rem;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .clicknumber {
+            font-size: 3rem;
+            color: #c9d6f0;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+        .goal-hint {
+            color: #7a8aa5;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+        .fatbutton {
+            width: 200px;
+            height: 200px;
+            border-radius: 0px;
+            background: #232e40;
+            border: 2px solid #a0b0d0;
+            font-size: 2rem;
+            color: white;
+            margin: 1rem auto;
+            cursor: pointer;
+            box-shadow: 0 0 20px #6080b0;
+            transition: 0.1s;
+        }
+        .fatbutton:active { background: #2f3d55; transform: scale(0.98); }
+        .morse-large {
+            font-size: 2.4rem;
+            font-weight: 300;
+            color: #c41e3a;
+            background: transparent;
+            text-align: center;
+            word-break: break-word;
+            line-height: 1.5;
+            width: 100%;
+            animation: smoothMorse 3.2s infinite ease-in-out;
+            padding: 2rem 0;
+        }
+        @keyframes smoothMorse {
+            0% { opacity: 0.3; } 45% { opacity: 1; } 80% { opacity: 0.3; } 100% { opacity: 0.3; }
+        }
+        .dummy { opacity: 0; height: 0; width: 0; position: absolute; overflow: hidden; }
+    </style>
+</head>
+<body>
+    <div class="dummy">
+        <script>
+            let fakeData = [1,2,3,4,5,6,7,8,9,10];
+            let fakeObj = {a:1,b:2,c:3};
+            function fakeProcessor(x) { return x * Math.random(); }
+            for (let i=0;i<20;i++) { fakeProcessor(i); }
+            window._tempStorage = [];
+        </script>
+        <div>фейк: 2 очка, 47 шайб, 10 марта, спорт, югра, капс, 24, admin</div>
+        <div>еще фейк: 33, 15 января, кхл тв, сибирь, бан, 20, владелец</div>
+    </div>
 
+    <div class="page" id="app">
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/ru/f/f0/Логотип_КХЛ.png" alt="khl">
+        </div>
+
+        <div id="stageOne" style="width:100%;">
+            <div class="question" id="qOne">1. Сколько не хватило "Динамо" очков для выхода в плей-офф?</div>
+            <input type="text" id="inputOne" class="white-field" autocomplete="off" placeholder=" ">
+        </div>
+
+        <div id="stageTwo" style="width:100%; display:none;">
+            <div class="question" id="qTwo">1. Какую команду заменил СЮ после первого рестарта лиги?</div>
+            <input type="text" id="inputTwo" class="white-field" autocomplete="off" placeholder=" ">
+        </div>
+
+        <div id="stageThree" style="width:100%; display:none;">
+            <div class="clickzone">
+                <div class="goal-hint">Нужно кликов: 70</div>
+                <div class="clicknumber" id="clickDisplay">0</div>
+                <button class="fatbutton" id="clickBtn" onclick="clickHandler()">+</button>
+            </div>
+            <div id="morseFinal" style="display:none;" class="morse-large">-.-- ..-.. .-.- -.-- .. .-.- -- --. / ...- .--.-. -. -- --. / - -.-. ... .-.. -. / -- --- -.-. / - .-.- --- -- .-.-</div>
+        </div>
+    </div>
+
+    <script>
+        let step1 = 0, step2 = 0;
+        let clickCount = 0, lastHit = 0;
+        let fakeAnswers1 = ['1','52','7 февраля','7.02','07.02','сми кхл'];
+        let fakeAnswers2 = ['трактор','мат','маты','за мат','за маты','21','nesvvis'];
+
+        document.getElementById('inputOne').addEventListener('input', function(e) {
+            let val = e.target.value.trim().toLowerCase();
+            if (step1 === 0 && (val === '1' || val === '1')) {
+                step1 = 1;
+                smoothUpdate();
+                document.getElementById('qOne').innerText = '2. Сколько "Сибирь" забросила шайб за сезон?';
+                e.target.value = '';
+            } else if (step1 === 1 && (val === '52' || val === '52')) {
+                step1 = 2;
+                smoothUpdate();
+                document.getElementById('qOne').innerText = '3. Когда был последний матч регулярки?';
+                e.target.value = '';
+            } else if (step1 === 2 && (val === '7 февраля' || val === '7.02' || val === '07.02')) {
+                step1 = 3;
+                smoothUpdate();
+                document.getElementById('qOne').innerText = '4. Какой новостной канал по лиге появился раньше чем Speaker?';
+                e.target.value = '';
+            } else if (step1 === 3 && (val === 'сми кхл' || val === 'сми кхл')) {
+                document.getElementById('stageOne').style.display = 'none';
+                let red = document.createElement('div');
+                red.className = 'red-marker';
+                red.innerText = 'МАРТ';
+                document.getElementById('app').appendChild(red);
+                setTimeout(() => {
+                    red.remove();
+                    document.getElementById('app').classList.add('smooth-transition');
+                    setTimeout(() => {
+                        document.getElementById('app').classList.remove('smooth-transition');
+                        document.getElementById('stageTwo').style.display = 'block';
+                    }, 600);
+                }, 3000);
+                step1 = 4;
+            }
+        });
+
+        document.getElementById('inputTwo').addEventListener('input', function(e) {
+            let val = e.target.value.trim().toLowerCase();
+            if (step2 === 0 && (val === 'трактор' || val === 'трактор')) {
+                step2 = 1;
+                smoothUpdate();
+                document.getElementById('qTwo').innerText = '2. За что раньше можно было получить предупреждение в чате лиги автомодерацией?';
+                e.target.value = '';
+            } else if (step2 === 1 && (val === 'мат' || val === 'маты' || val === 'за мат' || val === 'за маты')) {
+                step2 = 2;
+                smoothUpdate();
+                document.getElementById('qTwo').innerText = '3. Сколько матчей сыграла каждая команда в регулярке?';
+                e.target.value = '';
+            } else if (step2 === 2 && (val === '21' || val === '21')) {
+                step2 = 3;
+                smoothUpdate();
+                document.getElementById('qTwo').innerText = '4. Кто владелец лиги :)';
+                e.target.value = '';
+            } else if (step2 === 3 && (val === 'nesvvis' || val === 'nesvvis')) {
+                step2 = 4;
+                document.getElementById('stageTwo').style.display = 'none';
+                document.getElementById('stageThree').style.display = 'block';
+            }
+        });
+
+        function smoothUpdate() {
+            document.getElementById('app').classList.add('smooth-transition');
+            setTimeout(() => document.getElementById('app').classList.remove('smooth-transition'), 1200);
+        }
+
+        function clickHandler() {
+            let now = Date.now();
+            if (now - lastHit < 90) return;
+            lastHit = now;
+            clickCount++;
+            document.getElementById('clickDisplay').innerText = clickCount;
+            if (clickCount >= 70) {
+                document.getElementById('clickBtn').style.display = 'none';
+                document.getElementById('clickDisplay').style.display = 'none';
+                document.querySelector('.goal-hint').style.display = 'none';
+                document.getElementById('morseFinal').style.display = 'block';
+            }
+        }
+
+        let extraFake = [1,2,3,4,5].map(x => x*10);
+        window.decoy = function() { return 'hidden'; };
+    </script>
+</body>
+</html>
